@@ -1,0 +1,55 @@
+<div class="container">
+    <h4>Let's order Pizza</h4>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
+        <!-- we will place our fields here -->
+
+        <!-- name -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name">
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+                Name is required (minimum 2 characters).
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" formControlName="address">
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.address.valid" class="text-danger">
+                Address is required (minimum 10 characters).
+            </small>
+        </div>
+
+        <!-- list of addresses -->
+        <div formArrayName="order">
+            <div class="row" *ngFor="let pizzaOrder of myForm.controls.order.controls; let i=index">
+                <!-- pizza order header, show remove button when more than one address available -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>Pizza {{i + 1}}</span>
+                        <span class="pull-right">
+                            <a class="btn sm btn-default" *ngIf="myForm.controls.order.controls.length > 1"
+                               (click)="removeOrder(i)">X</a>
+                        </span>
+                    </div>
+
+                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                    <div class="panel-body" [formGroupName]="i">
+                        <app-order [group]="myForm.controls.order.controls[i]"></app-order>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" (click)="addOrder()">add Pizza</button>
+        </div>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-success" [disabled]="!myForm.valid">Submit</button>
+    </form>
+
+</div>

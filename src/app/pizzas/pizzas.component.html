@@ -1,0 +1,48 @@
+
+
+<div class="container">
+
+  <h4 class="card-title">Add Pizza</h4>
+
+  <form #pizzaForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             required [(ngModel)]="pizza.name" name="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type" required
+             [(ngModel)]="pizza.type" name="type" />
+    </div>
+    <div class="form-group">
+      <label for="recipe">Recipe</label>
+      <input type="text" class="form-control" id="recipe" required
+             [(ngModel)]="pizza.recipe" name="recipe[]" />
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" required
+             [(ngModel)]="pizza.price" name="price" />
+    </div>
+
+
+    <button type="submit" class="btn btn-success" (click)="add(); pizzaForm.reset()">Add Pizza</button>
+  </form>
+
+  <br/>
+
+  <div class="row" *ngFor="let pizza of pizzas">
+    <div class="card card-block">
+      <h4 class="card-title">{{ pizza.name }}</h4>
+      <p class="card-text">{{pizza.type}}</p>
+      <p class="card-text">{{pizza.recipe}}</p>
+      <p class="card-text">{{pizza.price}}</p>
+      <a    [routerLink]="['/pizzas', pizza._id]"
+            class="card-link">Details</a>
+      <a routerLink="/pizzas" class="card-link"
+              (click)="deleteP(pizza); $event.stopPropagation()">Delete</a>
+    </div>
+  </div>
+</div>
