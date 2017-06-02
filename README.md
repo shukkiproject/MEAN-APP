@@ -1,14 +1,21 @@
 # MeanApp (Class Work Pizzeria)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
-
 ## Technology used 
 
-MongoDB, ExpressJS, Angular4, NodeJs
+MongoDB, ExpressJS, Angular4, NodeJs.
+
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+
+## Advancement
+
+Pizza's CRUD functions are finished.
+
+Order Pizza page is a dynamic form that one could add thousands of pizza if they want! Total price is calculated simultaneously.
+
 
 ## remarks 
 
-Order Pizza page is a quick set up to test the dynamic form.
+This project will not be continued, sorry!
 
 ## Development server
 
