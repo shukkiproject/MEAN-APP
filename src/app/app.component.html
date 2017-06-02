@@ -1,6 +1,10 @@
-<h1>
-  {{title}}
-</h1>
-<button routerLink="/customer" routerLinkActive="active">Order pizza</button>
-<button routerLink="/pizzas" routerLinkActive="active">All pizzas</button>
-<router-outlet></router-outlet>
+<div class="container">
+  <h1 class="pull-center">
+    {{title}}
+  </h1>
+  <nav>
+    <button class="btn btn-default" routerLink="/order" routerLinkActive="active">Order Pizzas</button>
+    <button class="btn btn-default" routerLink="/pizzas" routerLinkActive="active">Pizzas List</button>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

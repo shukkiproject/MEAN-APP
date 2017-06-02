@@ -8,15 +8,15 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {PizzaService} from "./pizza.service";
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaDetailComponent } from './pizza-detail/pizza-detail.component';
-import { CustomerComponent } from './customer/customer.component';
 import { OrderComponent } from './order/order.component';
+import { PizzaQuantityComponent } from './pizza-quantity/pizza-quantity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PizzasComponent,
     PizzaDetailComponent,
-    CustomerComponent,
+    PizzaQuantityComponent,
     OrderComponent,
   ],
   imports: [

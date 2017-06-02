@@ -3,14 +3,14 @@ import {RouterModule} from '@angular/router';
 
 import {PizzasComponent} from "../pizzas/pizzas.component";
 import {PizzaDetailComponent} from "../pizza-detail/pizza-detail.component";
-import {CustomerComponent} from "../customer/customer.component";
+import {OrderComponent} from "../order/order.component";
 
 // Define the routes
 const ROUTES = [
     {path: '', redirectTo: 'pizzas', pathMatch: 'full'},
     {path: 'pizzas', component: PizzasComponent},
     {path: 'pizzas/:id', component: PizzaDetailComponent},
-    {path: 'customer', component: CustomerComponent}
+    {path: 'order', component: OrderComponent}
 ];
 
 @NgModule({

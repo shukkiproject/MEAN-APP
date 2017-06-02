@@ -1,0 +1,23 @@
+<div [formGroup]="pizzaForm">
+
+  <div class="form-group">
+    <label>Pizza</label>
+    <select class="form-control" formControlName="pizzaId">
+      <option *ngFor="let pizza of pizzas" [value]="pizza._id">{{pizza.name}} ${{pizza.price}}</option>
+    </select>
+    <small [hidden]="pizzaForm.controls.pizzaId.valid">
+      Pizza is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Quantity</label>
+    <input (change)="sendQty()"
+           type="number" class="form-control" formControlName="quantity"/>
+    <small [hidden]="pizzaForm.controls.quantity.valid" class="text-danger">
+      Quantity is required
+    </small>
+  </div>
+
+
+</div>

@@ -1,23 +1,54 @@
+<h4>Let's order some Pizzas</h4>
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
 
-<div [formGroup]="pizzaForm">
+  <div class="form-group">
+    <label for="client">client</label>
+    <input type="text" formControlName="client" class="form-control" id="client">
 
-  <div>
-    <label>Pizza</label>
-    <select class="form-control" formControlName="pizza">
-      <option *ngFor="let pizza of pizzas" [value]="pizza._id">{{pizza.name}} -- ${{pizza.price}}</option>
-    </select>
-    <small [hidden]="pizzaForm.controls.pizza.valid">
-      Pizza is required
+    <small *ngIf="!myForm.controls.client.valid" class="text-danger">
+      Client is required (minimum 2 characters).
+    </small>
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <input type="text" class="form-control" formControlName="address">
+
+    <small *ngIf="!myForm.controls.address.valid" class="text-danger">
+      Address is required (minimum 5 characters).
     </small>
   </div>
 
-  <div>
-    <label>Quantity</label>
-    <input type="number" class="form-control" formControlName="quantity"/>
-    <small [hidden]="pizzaForm.controls.quantity.valid" class="text-danger">
-      Quantity is required
-    </small>
+
+  <div formArrayName="pizzaQuantity">
+    <div class="row" *ngFor="let pizzaQtyCtl of myForm.controls.pizzaQuantity.controls; let i=index">
+      <!-- pizza order header, show remove button when more than one pizza available -->
+
+      <div class="row">
+        <span>Pizza {{i + 1}}</span>
+        <button class="btn btn-default"
+                *ngIf="myForm.controls.pizzaQuantity.controls.length > 1"
+                (click)="removeOrder(i)">X
+        </button>
+
+      </div>
+
+      <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+      <div [formGroupName]="i">
+        <app-pizza-quantity [pizzas]="pizzas" [group]="myForm.controls.pizzaQuantity.controls[i]"
+                            (quantity)="calculate()"></app-pizza-quantity>
+      </div>
+    </div>
+
+
   </div>
+  <br/>
+  <br/>
+  <div>
+    <button type="button" class="btn btn-default" (click)="addOrder()">another Pizza</button>
+  </div>
+  <br/>
+  <h4>Total : ${{ total }} </h4>
+  <br/>
+  <button type="submit" class="btn btn-success" [disabled]="!myForm.valid">Submit</button>
+</form>
 
-
-</div>

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+// import { menu } from './sampleData'; // sampleData
 
 let pizzaSchema = mongoose.Schema({
     name: String,
@@ -16,9 +17,24 @@ export default class MongoDB {
         this.db = mongoose.connection;
         this.db.on('error', console.error.bind(console, 'connection error:'));
         this.db.once('open', () => {
-            console.log('mongo up ');
+
+          console.log('mongo up ');
+
+          //import sample data
+          //  menu.forEach(piz => {
+          //    let pizza = new PizzaModal(piz);
+          //    pizza.save((err, pizza) => {
+          //      if (err) {
+          //        console.log(err);
+          //
+          //      } else {
+          //        console.log(pizza);
+          //        console.log("data saved");
+          //      }
+          //    });
+          //  });
+
         });
-        // pizzaTab.forEach(pizza => this.save(pizza));
     }
 
     findAll(res) {
@@ -44,9 +60,7 @@ export default class MongoDB {
         });
     }
 
-
-
-    save(val, res) {
+    save(val) {
         let pizza = new PizzaModal({ name: val.name, type: val.type, recipe: val.recipe, price: val.price});
 
         pizza.save((err, pizza) => {

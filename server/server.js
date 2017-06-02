@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require('cors'); // delete cors for prod
 
 // Get our API routes
 const api = require('./routes/api');
