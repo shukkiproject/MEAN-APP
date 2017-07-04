@@ -19,6 +19,8 @@ This project will not be continued, sorry!
 
 ## Development server
 
+Run `docker run --name mongo -p 27017:27017 -d --rm mongo` if your mongoDB runs on a docker.
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 Run `npm run server` for the API that connects the MongoDB.
 
