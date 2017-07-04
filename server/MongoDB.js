@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-// import { menu } from './sampleData'; // sampleData
+import { menu } from './sampleData'; // sampleData
 
 let pizzaSchema = mongoose.Schema({
     name: String,
@@ -60,7 +60,7 @@ export default class MongoDB {
         });
     }
 
-    save(val) {
+    save(val, res) {
         let pizza = new PizzaModal({ name: val.name, type: val.type, recipe: val.recipe, price: val.price});
 
         pizza.save((err, pizza) => {
